@@ -44,6 +44,29 @@ public class Equipment extends Resource{
 
     @Override
     public boolean validateBooking(String bookingId){
+        if(condition == null){
+            return false; 
+        }
+        else if ( qtyAvailable <= 0){
+            return false;
+        }
+        else if (condition.equalsIgnoreCase("POOR") || condition.equalsIgnoreCase("DAMAGED"){
+            return false; 
+        }
+        else if (condition.equalsIgnoreCase("FAIR")){
+            System. out.print("Please use cautiously");
+            return true;
+        }
+        else if (condition.equalsIgnoreCase("GOOD")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+        
+            
+        
         return true;
     }
 
