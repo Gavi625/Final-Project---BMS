@@ -42,12 +42,23 @@ public class Equipment extends Resource{
         this.condition = condition;
     }
 
-
+    @Override
     public boolean validateBooking(String bookingId){
         return true;
     }
 
     public String checkCondition(){
-        return "";
+        try{
+       return switch(condition.toUpperCase()){
+            case "GOOD" -> "Equipment is in good working condition";
+            case "FAIR" -> "Equipment may require maintenance";
+            case "POOR" -> "Equipment requires maintenance";
+            case "DAMAGED" -> "Equipment should not be booked";
+            default -> "Invalid";
+               catch(NullPointerException e){
+                   return "Condition is unknown";
+                }             
     }
 }
+    }
+    
