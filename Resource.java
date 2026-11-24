@@ -1,11 +1,11 @@
 public class Resource{
     private String resourceId;
     private String resourceName;
-    public String resourceStatus;
-    public String location;
-    public int capacity;
-    public boolean availability;
-    public Schedule calendar;
+    private String resourceStatus;
+    private String location;
+    private int capacity;
+    private boolean availability;
+    private Schedule calendar;
 
     
 
