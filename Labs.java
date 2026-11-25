@@ -1,6 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Labs extends Venue{
     private boolean authorised;
     private String labtype;
+    private final List<String> authorisedUsers = new ArrayList<>();
+    
 
 
     
@@ -28,16 +34,34 @@ public class Labs extends Venue{
         this.labtype = labtype;
     }
 
-    @Override
-    public boolean validateBooking(String bookingId){
-        return true;
+    public void addAuthorisedUser(String username){
+        if(username != null && !authorisedUsers.contains(username)){
+            authoriseduser.add(username);
+        }
     }
 
+    public void removeAuthorisedUser(String username){
+        authorisedUsers.remove(username);
+    }
+
+    @Override
+    public boolean validateBooking(String bookingId){
+        return basicChecks(bookingId);
+    }
+
+    public boolean validateBooking(String bookingId, int people, String username){
+        return validateBooking(bookingId, people) && checkAuthorization(username);
+    }
+
+    @Override
     public int checkCapacity(){
-        return 0;
+        return getCapacity();
     }
 
     public boolean checkAuthorization (String username){
-        return false;
+        return !authorised || (username != null && authorisedUsers.contains(username));
+    }
+    public boolean checkAuthorization(String username){
+        return !authorised || (username != null && authorisedUsers.contains(username));
     }
 }
