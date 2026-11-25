@@ -6,13 +6,17 @@ public class Courts extends Venue{
 
     
 
-    public Courts() {}
+    public Courts() {
+        this.shareable = true;
+    }
 
     public Courts(String courtType, String sport, int maxPlayers, double duration) {
         this.courtType = courtType;
         this.sport = sport;
         this.maxPlayers = maxPlayers;
         this.duration = duration;
+        this.shareable = true;
+        this.sharingPolicy = "other players may join until" + maxPlayers + "players";
     }
 
 
@@ -48,11 +52,13 @@ public class Courts extends Venue{
         this.duration = duration;
     }
 
+   @Override
     public boolean validateBooking(String bookingId){
-        return true;
+        return basicChecks(bookingId) && maxPlayers > 0;
     }
 
+    @Override
     public int checkCapacity(){
-        return 0;
+        return maxPlayers;
     }
 }
