@@ -38,12 +38,24 @@ public class Room extends Venue{
     public void setHasProjector(boolean hasProjector) {
         this.hasProjector = hasProjector;
     }
+    
 
+    @Override
     public boolean validateBooking(String bookingId){
-        return true;
+        return basicChecks(bookingId) && checkCapacity() > 0;
     }
 
+    @Override
     public int checkCapacity(){
-        return 0;
+        return getCapacity();
     }
+    public boolean roomBooking(String bookingId){
+        return validateBooking(bookingId):
+    }
+
+    public boolean checkOccupancy(int people) {
+        return checkCapacity(people);
+    }
+    
+    
 }
