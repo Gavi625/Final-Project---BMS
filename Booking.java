@@ -3,16 +3,17 @@ public class Booking{
     private String resource;
     private String user;
     private TimeSlot timeSlot;
-    private boolean bookingStatus;
+    private boolean isBooked;
+    // true 
 
     public Booking(){}
         
-    public Booking(String bookingId, String resource, String user, TimeSlot timeSlot, boolean bookingStatus) {
+    public Booking(String bookingId, String resource, String user, TimeSlot timeSlot, boolean isBooked) {
         this.bookingId = bookingId;
         this.resource = resource;
         this.user = user;
         this.timeSlot = timeSlot;
-        this.bookingStatus = bookingStatus;
+        this.isBooked =  isBooked;
     }
 
 
@@ -48,12 +49,12 @@ public class Booking{
         this.timeSlot = timeSlot;
     }
 
-    public boolean isBookingStatus() {
-        return bookingStatus;
+    public boolean getIsBooking() {
+        return isBooked;
     }
 
-    public void setBookingStatus(boolean bookingStatus) {
-        this.bookingStatus = bookingStatus;
+    public void setIsBooking(boolean isBooked) {
+        this.isBooked = isBooked;
     }
 
     public String confirmBooking(){
